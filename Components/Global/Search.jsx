@@ -1,9 +1,41 @@
-import React from 'react'
+import React from "react";
 
 const Search = () => {
   return (
-    <div>Search</div>
-  )
-}
+    <div className="techwave_fn_searchbar">
+      <div className="search__bar">
+        <input type="text" className="search__input" placeholder="Search" />
+        <img
+          src="img/lighticon/light-5.png"
+          alt=""
+          className="fn__svg search__icon"
+        />
+        <span className="search__closer">
+          <img src="img/lighticon/light-18.png" className="fn__svg" alt="" />
+        </span>
+      </div>
 
-export default Search
+      <div className="search__results">
+        <div className="results__title">Results</div>
+        <div className="results__list">
+          <ul>
+            <li>
+              <a href="#">Artificial Intelligence</a>
+            </li>
+            <li>
+              <a href="#">Learn about the impact of AI Crypto trading bot</a>
+            </li>
+            <li>
+              <a href="#">Welcome to blockchain developer coder</a>
+            </li>
+            <li>
+              <a href="#">Artificial Intelligence</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Search;

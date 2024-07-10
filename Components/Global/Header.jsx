@@ -19,21 +19,47 @@ const Header = ({ networkName, setActiveComponent }) => {
             <span className="count">AC</span>
             <span className="text">{networkName}</span>
           </span>
-          {
-            userMembership !== "notMember" ? (
-              <a onClick={()=>setActiveComponent("Trading")}
-              className="token_upgrade techwave_fn_button">
+          {userMembership !== "notMember" ? (
+            <a
+              onClick={() => setActiveComponent("Trading")}
+              className="token_upgrade techwave_fn_button"
+            >
               <span>Start Trade</span>
-              </a>
-            ) :(
-              <a
-              onClick={()=>setActiveComponent
-              ("Trading")}
-              className="token_upgrade techwave_fn_button">
+            </a>
+          ) : (
+            <a
+              onClick={() => setActiveComponent("Trading")}
+              className="token_upgrade techwave_fn_button"
+            >
               <span>Upgrade</span>
-              </a>
-            )
-          }
+            </a>
+          )}
+        </div>
+      </div>
+
+      <div className="header__right">
+        <div className="fn__nav_bar">
+          <div className="bar__item bar__item_search">
+            <div className="item_opener" title="Search">
+              <img
+                src="img/lighticon/light-5.png"
+                className="fn__svg"
+                alt=""
+              ></img>
+            </div>
+            <div className="item_popup" data-position="right">
+              <input type="text" placeholder="search"></input>
+            </div>
+          </div>
+
+          <div className="bar__item bar__item_user">
+            <a
+              onClick={() => setActiveComponent("Profile")}
+              className="user_opener fn__tooltip"
+            >
+              <img src={userDetails?.image || "img/crypto.png"} alt="" />
+            </a>
+          </div>
         </div>
       </div>
     </div>
