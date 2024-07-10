@@ -1,4 +1,4 @@
-import React, {useState,uuseEffect,useContext} from 'react'
+import React, {useState,useContext} from 'react'
 import axios from 'axios';
 import toast from "react-hot-toast";
 
@@ -33,11 +33,11 @@ const index = () => {
   const {TRADING_BOT} = useContext(CONTEXT);
 
   //STATE VARIABLE
-  const [activeComponent,setActiveComponent] = useState("SignUp");
+  const [activeComponent,setActiveComponent] = useState("");
   const [membershipType,setMembershipType] = useState("Premium");
   const [authBackEndID,setAuthBackEndID] = useState("");
 
-  const [Networks,setNetworks] = useState({});
+  const [networks,setNetworks] = useState({});
   const [networkName,setNetworkName] = useState();
 
   //NOTIFICATION
@@ -46,8 +46,7 @@ const index = () => {
   
   return (
     <div>
-        <MovingSubmenu/>
-        
+      
         {
           activeComponent ==  "SignUp" ? (
             <SignUp 
@@ -80,8 +79,7 @@ const index = () => {
                 setNetworkName = {setNetworkName}/>
               ) : activeComponent
                == "Trading" ? (
-                <Trading 
-                axios={axios}
+                <Trading  axios={axios}
                 />
               ) : activeComponent == "Pricing" ? (
                 <Price/>
@@ -100,7 +98,9 @@ const index = () => {
           )}
 
           {activeComponent == "Login"  ? (
-            <Login setActiveComponent = {setActiveComponent} axios = {axios}
+            <Login
+             setActiveComponent={setActiveComponent} 
+             axios={axios}
             />
           ) : (
             ""
