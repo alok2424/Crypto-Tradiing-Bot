@@ -1,0 +1,16 @@
+.second_circle{
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: rotate 5s linear infinite;   
+}
+@keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+      transform-origin: 50% 50%;
+    }
+    100% {
+      transform: rotate(360deg);
+      transform-origin: 50% 50%;
+    }
+}
