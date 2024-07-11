@@ -45,7 +45,9 @@ const Home = () => {
                 </ul>
               </div>
             </div>
-          </div>
+          
+
+
           <div className="section_right">
             <div className="company_info">
               <img src="img/light-logo.png" alt="" />
@@ -63,6 +65,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
+          </div>
           </div>
         </div>
       </div>
