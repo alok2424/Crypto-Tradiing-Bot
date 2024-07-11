@@ -130,7 +130,9 @@ const TradeTokens = () => {
                   
                     <div className="pricing__fields">
                       {tokens?.map((token, index) => (
-                        <div className={`item_row ${
+                        <div 
+                         key={index}
+                        className={`item_row ${
                           active == index + 1 ? "pricing__heading" : ""}`}
                           onClick={
                             (() => setTradeToken(token),

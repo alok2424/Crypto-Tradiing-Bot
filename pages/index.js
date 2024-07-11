@@ -75,11 +75,13 @@ const index = () => {
               ): activeComponent == "Top Exchange Tokens" ? (
                 <TopExchangeToken/>
               ) : activeComponent == "Networks" ? (
-                <Networks networkName={networkName}
+                <Networks 
+                networkName={networkName}
                 setNetworkName = {setNetworkName}/>
-              ) : activeComponent
-               == "Trading" ? (
-                <Trading  axios={axios}
+              ):activeComponent == "Add Network" ? (
+                 <AddNetwork/>
+              ) : activeComponent == "Trading" ? (
+                 <Trading  axios={axios}
                 />
               ) : activeComponent == "Pricing" ? (
                 <Price/>

@@ -37,8 +37,8 @@ export const PROVIDER = ({children}) => {
            }`;
 
            const axiosData = await axios.post(URL,{query:query});
-       //    setTopTokens(axiosData.data.data.tokens);
-           console.log(axiosData);
+          setTopTokens(axiosData.data.data.tokens);
+         
         } catch (error) {
             console.log(error);
         }
