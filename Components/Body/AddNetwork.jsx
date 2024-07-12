@@ -53,6 +53,7 @@ const AddNetwork = ({ axios }) => {
   };
 
   const uploadToInfura = async (file) => {
+    notifySuccess("Uploading File");
     if (file) {
       try {
         const formData = new FormData();
@@ -60,18 +61,21 @@ const AddNetwork = ({ axios }) => {
 
         const response = await axios({
           method: "post",
-          url: "",
+          url: "https://api.pinata.cloud/pinning",
           data: formData,
           maxBodyLength: "Infinity",
           headers: {
-            pinata_api_key: "6eb6db48369dda137418",
-            pinata_secret_api_key: "",
+            pinata_api_key: "95d7ea563ab0cf04d97c",
+            pinata_secret_api_key: "a5fb13184b3d902dca9ff986cffa46c2435a126ad4d4256196621328b5c635ee",
+            "Content-Type": "multipart/form-data",
           },
         });
+        console.log(response);
 
-        const ImgHash = `https://getway.pinata.cloud/ipfs/${response.data.IpfsHash}`;
+        const ImgHash = `https://gateway.pinata.cloud/ipfs/${response.data.IpfsHash}`;
         setNetwork({ ...network, images: ImgHash });
         setDisplayImg(ImgHash);
+        notifySuccess("Uploaded Successfully");
       } catch (error) {
         notifyError("Unable to upload image to pinata");
         console.log(error);
@@ -90,6 +94,8 @@ const AddNetwork = ({ axios }) => {
     isDragReject,
     isDragActive,
   } = useDropZone({ onDrop, maxSize: 500000000000 });
+ 
+  console.log(displayImg);
 
   return (
     <div className="techwave_fn_content">
@@ -123,11 +129,8 @@ const AddNetwork = ({ axios }) => {
                           />
                         </span>
                       ) : (
-                        <img
-                          src={displayImg}
-                          className="preview_img"
-                          alt=""
-                        ></img>
+                        <img src={displayImg} className="preview_img" alt=""></img>
+
                       )}
                     </label>
                   </div>
