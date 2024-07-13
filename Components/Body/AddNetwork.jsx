@@ -1,4 +1,4 @@
-import { headers } from "next/headers";
+// import { headers } from "next/headers";
 import React, { useState, useCallback, useEffect } from "react";
 import { useDropZone } from "react-dropzone";
 import toast from "react-hot-toast";
