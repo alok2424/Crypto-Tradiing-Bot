@@ -87,13 +87,21 @@ const AddNetwork = ({ axios }) => {
     await uploadToInfura(acceptedFile[0]);
   });
 
-  const {
-    getInputProps,
-    getRootProps,
-    isDragAccept,
-    isDragReject,
-    isDragActive,
-  } = useDropZone({ onDrop, maxSize: 500000000000 });
+  const MyDropzone = () => {
+    const { getRootProps, getInputProps, isDragActive, isDragReject } = useDropZone({
+      onDrop: (acceptedFiles) => {
+        console.log(acceptedFiles);
+      },
+      maxSize: 500000000000, // This is a very large size limit
+    });
+
+  // const {
+  //   getInputProps,
+  //   getRootProps,
+  //   isDragAccept,
+  //   isDragReject,
+  //   isDragActive,
+  // } = useDropZone({ onDrop, maxSize: 500000000000 });
  
   console.log(displayImg);
 
@@ -237,5 +245,5 @@ const AddNetwork = ({ axios }) => {
     </div>
   );
 };
-
+};
 export default AddNetwork;
