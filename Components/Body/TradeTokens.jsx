@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 
 //internal import
+
 import { Footer } from "../index";
-import { local } from "web3modal";
-import { FaRegCopy } from "react-icons/fa6";
+
 
 const TradeTokens = () => {
   const [search, setSearch] = useState("");
@@ -14,7 +14,7 @@ const TradeTokens = () => {
   const [active, setActive] = useState();
 
   useEffect(() => {
-    const tokenLists = JSON.parse(localStorage.getItem("setTokens"));
+    const tokenLists = JSON.parse(localStorage.getItem("setTokens"));//accessing data from json parse
     const tokenPair = JSON.parse(localStorage.getItem("tokenPair"));
 
     setTradeToken(tokenPair);
