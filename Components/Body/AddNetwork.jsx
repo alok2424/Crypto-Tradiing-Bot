@@ -1,6 +1,6 @@
 // import { headers } from "next/headers";
 import React, { useState, useCallback, useEffect } from "react";
-import { useDropZone } from "react-dropzone";
+import { useDropZone } from "react-dropzone";//drag and drop wala feature k liye isko import kiya 
 import toast from "react-hot-toast";
 
 const AddNetwork = ({ axios }) => {
@@ -23,6 +23,7 @@ const AddNetwork = ({ axios }) => {
   };
 
   const saveNetworks = () => {
+    //destructuring
     const { networkName, rpcUrl, apiKey, walletAddress, privateKey, image } =
       network;
 
@@ -36,7 +37,7 @@ const AddNetwork = ({ axios }) => {
     )
       return notifyError("Provide all data");
 
-    let networkArray = [];
+    let networkArray = []; //created blank array to store all networks
 
     const networksLists = localStorage.getItem("setNetworks");
     if (networksLists) {
@@ -52,6 +53,7 @@ const AddNetwork = ({ axios }) => {
     }
   };
 
+  //uploading to  pinata
   const uploadToInfura = async (file) => {
     notifySuccess("Uploading File");
     if (file) {
@@ -59,6 +61,7 @@ const AddNetwork = ({ axios }) => {
         const formData = new FormData();
         formData.append("file", file);
 
+        //Taking data from website and storing it into response
         const response = await axios({
           method: "post",
           url: "https://api.pinata.cloud/pinning",
@@ -66,7 +69,8 @@ const AddNetwork = ({ axios }) => {
           maxBodyLength: "Infinity",
           headers: {
             pinata_api_key: "95d7ea563ab0cf04d97c",
-            pinata_secret_api_key: "a5fb13184b3d902dca9ff986cffa46c2435a126ad4d4256196621328b5c635ee",
+            pinata_secret_api_key:
+              "a5fb13184b3d902dca9ff986cffa46c2435a126ad4d4256196621328b5c635ee",
             "Content-Type": "multipart/form-data",
           },
         });
@@ -83,167 +87,180 @@ const AddNetwork = ({ axios }) => {
     }
   };
 
+  //image drop wale file
   const onDrop = useCallback(async (acceptedFile) => {
     await uploadToInfura(acceptedFile[0]);
   });
 
   const MyDropzone = () => {
-    const { getRootProps, getInputProps, isDragActive, isDragReject } = useDropZone({
+    const {
+      getRootProps,
+      getInputProps,
+      isDragAccept,
+      isDragActive,
+      isDragReject,
+    } = useDropZone({
       onDrop: (acceptedFiles) => {
         console.log(acceptedFiles);
       },
       maxSize: 500000000000, // This is a very large size limit
     });
 
-  // const {
-  //   getInputProps,
-  //   getRootProps,
-  //   isDragAccept,
-  //   isDragReject,
-  //   isDragActive,
-  // } = useDropZone({ onDrop, maxSize: 500000000000 });
- 
-  console.log(displayImg);
+    // const {
+    //   getInputProps,
+    //   getRootProps,
+    //   isDragAccept,
+    //   isDragReject,
+    //   isDragActive,
+    // } = useDropZone({ onDrop, maxSize: 500000000000 });
 
-  return (
-    <div className="techwave_fn_content">
-      <div className="techwave_fn_page">
-        <div className="techwave_fn_user_settings_page">
-          <div className="techwave_fn_pagetitle">
-            <h2 className="title">Add Trading Tokens</h2>
-          </div>
+    console.log(displayImg);
 
-          <div className="container small">
-            <div className="techwave_fn_user_settings">
-              <form>
-                <div className="user__settings">
-                  <div className="settings_left">
-                    <label htmlFor="input" className="fn__upload">
-                      {displayImg == "" ? (
-                        <span className="upload_content" {...getRootProps()}>
-                          <span className="title">Drag & Drop a Image</span>
-                          <span className="fn__lined_text">
-                            <span className="line"></span>
-                            <span className="text">0k</span>
-                            <span className="line"></span>
+    return (
+      <div className="techwave_fn_content">
+        <div className="techwave_fn_page">
+          <div className="techwave_fn_user_settings_page">
+            <div className="techwave_fn_pagetitle">
+              <h2 className="title">Add Trading Tokens</h2>
+            </div>
+
+            <div className="container small">
+              <div className="techwave_fn_user_settings">
+                <form>
+                  <div className="user__settings">
+                    <div className="settings_left">
+                      <label htmlFor="input" className="fn__upload">
+                        {displayImg == "" ? (
+                          //Ataching root prop of dropboxl
+                          <span className="upload_content" {...getRootProps()}>
+                            <span className="title">Drag & Drop a Image</span>
+                            <span className="fn__lined_text">
+                              <span className="line"></span>
+                              <span className="text">ok</span>
+                              <span className="line"></span>
+                            </span>
+
+                            <span className="title">Browse</span>
+                            <span className="desc">
+                              Support JPG,JPEG,and PNG
+                            </span>
+                            <input
+                              type="file"
+                              accept="image/*"
+                              {...getInputProps()}
+                            />
                           </span>
+                        ) : (
+                          <img
+                            src={displayImg}
+                            className="preview_img"
+                            alt=""
+                          ></img>
+                        )}
+                      </label>
+                    </div>
 
-                          <span className="title">Browse</span>
-                          <span className="desc">Support JPG,JPEG,and PNG</span>
+                    <div className="settings_right">
+                      <div className="item">
+                        <label htmlFor="name" className="input_label">
+                          Network Name
+                        </label>
+
+                        <div className="input_item">
                           <input
-                            type="file"
-                            accept="image/*"
-                            {...getInputProps()}
-                          />
-                        </span>
-                      ) : (
-                        <img src={displayImg} className="preview_img" alt=""></img>
-
-                      )}
-                    </label>
-                  </div>
-
-                  <div className="settings_right">
-                    <div className="item">
-                      <label htmlFor="name" className="input_label">
-                        Network Name
-                      </label>
-
-                      <div className="input_item">
-                        <input
-                          type="text"
-                          className="input"
-                          placeholder="network"
-                          onChange={(e) =>
-                            handleFormFieldChange("networkName", e)
-                          }
-                        ></input>
+                            type="text"
+                            className="input"
+                            placeholder="network"
+                            onChange={(e) =>
+                              handleFormFieldChange("networkName", e)
+                            }
+                          ></input>
+                        </div>
                       </div>
-                    </div>
 
-                    <div className="item">
-                      <label htmlFor="name" className="input_label">
-                        Alchemy Provider
-                      </label>
+                      <div className="item">
+                        <label htmlFor="name" className="input_label">
+                          Alchemy Provider
+                        </label>
 
-                      <div className="input_item">
-                        <input
-                          type="text"
-                          className="input"
-                          placeholder="RPC URL"
-                          onChange={(e) => handleFormFieldChange("rpcUrl", e)}
-                        ></input>
+                        <div className="input_item">
+                          <input
+                            type="text"
+                            className="input"
+                            placeholder="RPC URL"
+                            onChange={(e) => handleFormFieldChange("rpcUrl", e)}
+                          ></input>
+                        </div>
                       </div>
-                    </div>
 
-                    <div className="item">
-                      <label htmlFor="name" className="input_label">
-                        Alchemy API Key
-                      </label>
+                      <div className="item">
+                        <label htmlFor="name" className="input_label">
+                          Alchemy API Key
+                        </label>
 
-                      <div className="input_item">
-                        <input
-                          type="text"
-                          className="input"
-                          placeholder="APi Key"
-                          onChange={(e) => handleFormFieldChange("apiKey", e)}
-                        ></input>
+                        <div className="input_item">
+                          <input
+                            type="text"
+                            className="input"
+                            placeholder="APi Key"
+                            onChange={(e) => handleFormFieldChange("apiKey", e)}
+                          ></input>
+                        </div>
                       </div>
-                    </div>
 
-                    <div className="item">
-                      <label htmlFor="name" className="input_label">
-                        Wallet Address
-                      </label>
+                      <div className="item">
+                        <label htmlFor="name" className="input_label">
+                          Wallet Address
+                        </label>
 
-                      <div className="input_item">
-                        <input
-                          type="text"
-                          className="input"
-                          placeholder="wallet address"
-                          onChange={(e) =>
-                            handleFormFieldChange("walletAddress", e)
-                          }
-                        ></input>
+                        <div className="input_item">
+                          <input
+                            type="text"
+                            className="input"
+                            placeholder="wallet address"
+                            onChange={(e) =>
+                              handleFormFieldChange("walletAddress", e)
+                            }
+                          ></input>
+                        </div>
                       </div>
-                    </div>
 
-                    <div className="item">
-                      <label htmlFor="name" className="input_label">
-                        Private Key
-                      </label>
+                      <div className="item">
+                        <label htmlFor="name" className="input_label">
+                          Private Key
+                        </label>
 
-                      <div className="input_item">
-                        <input
-                          type="text"
-                          className="input"
-                          placeholder="Private Key"
-                          onChange={(e) =>
-                            handleFormFieldChange("privateKey", e)
-                          }
-                        ></input>
+                        <div className="input_item">
+                          <input
+                            type="text"
+                            className="input"
+                            placeholder="Private Key"
+                            onChange={(e) =>
+                              handleFormFieldChange("privateKey", e)
+                            }
+                          ></input>
+                        </div>
                       </div>
-                    </div>
 
-                    <div className="item">
-                      <div>
-                        <a
-                          onClick={() => saveNetworks()}
-                          className="techwave_fn_button"
-                        >
-                          Save Networks
-                        </a>
+                      <div className="item">
+                        <div>
+                          <a
+                            onClick={() => saveNetworks()}
+                            className="techwave_fn_button"
+                          >
+                            Save Networks
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </form>
+                </form>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  );
-};
+    );
+  };
 };
 export default AddNetwork;
