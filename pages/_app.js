@@ -1,4 +1,4 @@
-import "@/styles/globals.css";
+import "../styles/globals.css";
 
 //INTERNAL IMPORTS
 import { PROVIDER } from "../context/context";
