@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 //internal import
-import { CONTEXT } from "@/context/context";
 import { Footer } from "../index";
 import { FaRegCopy } from "react-icons/fa6";
 
