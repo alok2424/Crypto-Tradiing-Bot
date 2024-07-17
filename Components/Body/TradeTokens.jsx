@@ -2,10 +2,9 @@ import React, { useState, useEffect } from "react";
 
 //internal import
 
-import { Footer } from "../index";
+import {Footer} from "../index"
 
-
-const TradeTokens = () => {
+const TradeTokens = () => {jjj
   const [search, setSearch] = useState("");
   const [searchItem, setSearchItem] = useState(search);
   const [tokens, setTokens] = useState([]);
@@ -36,6 +35,7 @@ const TradeTokens = () => {
     }
   };
 
+  //jab tokens ki length 0 ho 
   const onClearSearch = () => {
     if (tokens?.length && copyTokens?.length) {
       setTokens(copyTokens);
@@ -55,6 +55,7 @@ const TradeTokens = () => {
     }
   }, [search]);
 
+  //allowing user to select token to trade
   const selectTokenPair = () => {
     localStorage.setItem("tokenPair", JSON.stringify(tradeToken));
   };

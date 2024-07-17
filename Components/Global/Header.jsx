@@ -28,7 +28,7 @@ const Header = ({ networkName, setActiveComponent }) => {
             </a>
           ) : (
             <a
-              onClick={() => setActiveComponent("Trading")}
+              onClick={() => setActiveComponent("Pricing")}
               className="token_upgrade techwave_fn_button"
             >
               <span>Upgrade</span>
@@ -47,7 +47,8 @@ const Header = ({ networkName, setActiveComponent }) => {
                 alt=""
               ></img>
             </div>
-            <div className="item_popup" data-position="right">
+            <div className="item_popup" 
+             data-position="right">
               <input type="text" placeholder="search"></input>
             </div>
           </div>

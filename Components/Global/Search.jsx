@@ -4,7 +4,10 @@ const Search = () => {
   return (
     <div className="techwave_fn_searchbar">
       <div className="search__bar">
-        <input type="text" className="search__input" placeholder="Search" />
+        <input 
+        type="text" 
+        className="search__input" 
+        placeholder="Search here.." />
         <img
           src="img/lighticon/light-5.png"
           alt=""

@@ -14,9 +14,9 @@ const SidebarCompoent = ({
         <li key={index} onClick={() => setActiveComponent(menu.menu)}>
           <a
             onClick={() => setActive(menu.menu)}
-            className={`fn__tooltip ${
-              active == menu.menu ? "active" : ""
-            } menu__item`}
+            className={
+              `fn__tooltip ${active == menu.menu ? "active" : ""} 
+              menu__item`}
             data-position="right"
             title={menu.menu}
           >
@@ -30,6 +30,7 @@ const SidebarCompoent = ({
     </ul>
   </div>
 );
+
 const Sidebar = ({ setActiveComponent }) => {
   const [active, setActive] = useState("Home");
 
@@ -87,8 +88,12 @@ const Sidebar = ({ setActiveComponent }) => {
         <a className="fn_logo">
           '
           <span className="full_logo">
-            <img src="img/light-logo.png" className="desktop_logo" alt="" />
-            <img src="img/light-logo.png" className="retina_logo" alt="" />
+            <img src="img/light-logo.png" 
+            className="desktop_logo"
+             alt="" />
+            <img src="img/light-logo.png" 
+            className="retina_logo" 
+            alt="" />
           </span>
           <span className="short_logo">
             <img
@@ -96,7 +101,9 @@ const Sidebar = ({ setActiveComponent }) => {
               className="desktop_logo"
               alt=""
             />
-            <img src="img/crypto.png" className="retina_logo" alt="" />
+            <img src="img/crypto.png"
+             className="retina_logo"
+             alt="" />
           </span>
         </a>
 
@@ -127,7 +134,7 @@ const Sidebar = ({ setActiveComponent }) => {
         />
 
         <div className="nav_group">
-          <h2 className="grooup__title">Controls</h2>
+          <h2 className="group__title">Controls</h2>
           <ul className="group__list">
             <li className="" onClick={() => logout()}>
               <a

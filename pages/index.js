@@ -35,7 +35,6 @@ const index = () => {
   //STATE VARIABLE
   const [activeComponent,setActiveComponent] = useState("");
   const [membershipType,setMembershipType] = useState("Premium");
-  const [authBackEndID,setAuthBackEndID] = useState("");
 
   const [networks,setNetworks] = useState({});
   const [networkName,setNetworkName] = useState();
@@ -58,15 +57,12 @@ const index = () => {
           ):(
             <div className='techwave_fn_wrapper'>
             <div className='techwave_fn_wrap'>
-            <Search/>
+             <Search/>
             <Header
              networkName={networkName}
              setActiveComponent={setActiveComponent}
              />
-             <Sidebar 
-             setActiveComponent = 
-             {setActiveComponent}
-             />
+             <Sidebar setActiveComponent={setActiveComponent}/>
              {
               activeComponent == "Home" ? (
                 <Home/>
@@ -79,7 +75,7 @@ const index = () => {
                 networkName={networkName}
                 setNetworkName = {setNetworkName}/>
               ):activeComponent == "Add Network" ? (
-                 <AddNetwork/>
+                 <AddNetwork axios={axios}/>
               ) : activeComponent == "Trading" ? (
                  <Trading  axios={axios}
                 />

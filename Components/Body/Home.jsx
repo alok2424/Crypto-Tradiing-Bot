@@ -42,30 +42,52 @@ const Home = () => {
                       </a>
                     </div>
                   </li>
+
+                  <li>
+                    <div className="item">
+                      <a>
+                        <span className="icon">
+                          <img
+                            src="img/lighticon/light-16.png"
+                            className="fn__svg"
+                            alt=""
+                          ></img>
+                        </span>
+                        <h2 className="title">Sell Any Token</h2>
+                        <p className="desc">lorem ipsum</p>
+
+                        <span className="arrow">
+                          <img
+                            src="img/lighticon/light-22.png"
+                            className="fn__svg"
+                            alt=""
+                          ></img>
+                        </span>
+                      </a>
+                    </div>
+                  </li>
                 </ul>
               </div>
             </div>
-          
 
+            <div className="section_right">
+              <div className="company_info">
+                <img src="img/light-logo.png" alt="" />
 
-          <div className="section_right">
-            <div className="company_info">
-              <img src="img/light-logo.png" alt="" />
-
-              <p className="fn__animated_text">Lorem ipsum dolor</p>
-              <hr />
-              <div className="fn_members">
-                <div className="active item">
-                  <span className="circle"></span>
-                  <span className="text">11111 Online</span>
-                </div>
-                <div className="item">
-                  <span className="circle"></span>
-                  <span className="text">992786 Members</span>
+                <p className="fn__animated_text">Lorem ipsum dolor</p>
+                <hr />
+                <div className="fn_members">
+                  <div className="active item">
+                    <span className="circle"></span>
+                    <span className="text">11111 Online</span>
+                  </div>
+                  <div className="item">
+                    <span className="circle"></span>
+                    <span className="text">992786 Members</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
           </div>
         </div>
       </div>

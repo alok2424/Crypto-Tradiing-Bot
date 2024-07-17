@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 
 const AddNetwork = ({ axios }) => {
   //NOTIFICATION
-  const notify = (msg) => toast.error(msg, { duration: 2000 });
+  const notifyError = (msg) => toast.error(msg, { duration: 2000 });
   const notifySuccess = (msg) => toast.success(msg, { duration: 2000 });
 
   const [displayImg, setDisplayImg] = useState("");
