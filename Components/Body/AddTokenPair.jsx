@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import toast from "react-hot-toast";
 const AddTokenPair = () => {
   //Notification
   const notifyError = (msg) => toast.error(msg, { duration: 2000 });
@@ -10,13 +10,14 @@ const AddTokenPair = () => {
     token2: "",
     tokenAddress1: "",
     tokenAddress2: "",
-    network: "",
+    network: "",//on which network they want to perform trade
     fee: "",
     buyAmount: "",
-    targetPrice: "",
+    targetPrice: "",//for selling token
     message: "",
   });
 
+  //fieldName is basically properties of token like name,id,symbol
   const handleFormFieldChange = (fieldName, e) => {
     setToken({ ...token, [fieldName]: e.target.value });
   };
@@ -30,8 +31,8 @@ const AddTokenPair = () => {
       network,
       fee,
       message,
-    } = token;
-
+    } = token;//destructuring all the properties of token
+// check whether the user has provided all the information or not
     if (
       !token1 ||
       !token2 ||
@@ -42,10 +43,14 @@ const AddTokenPair = () => {
       !message
     )
       return notifyError("Provide all data");
-
+//first check whether the data is exist in the local storage or not
+//if not exist then have to store it but if exist 
+//then just push it in the form of array
+    
     let tokenArray = [];
+  //localStorage is a web API that provides access to a storage object where you can store data that persists even after the browser is closed and reopened.
     const tokenLists = localStorage.getItem("setTokens");
-    if (tokenLists) {
+    if (tokenLists){// if tokens exist in the tokenlist
       tokenArray = JSON.parse(localStorage.getItem("setTokens"));
       tokenArray.push(token);
       localStorage.setItem("setTokens", JSON.stringify(tokenArray));
@@ -71,6 +76,7 @@ const AddTokenPair = () => {
                 <form className="contact_form">
                   <div className="input_list">
                     <ul>
+                    //fieldName in handleFormFieldChangel
                       <li>
                         <input
                           type="text"

@@ -17,7 +17,6 @@ const TopExchangeToken = () => {
     const filterTokens = tokens?.filter(({ name }) =>
       name.toLowerCase().includes(value.toLowerCase())
     );
-
     if (filterTokens?.length === 0) {
       setTokens(copyTokens);
     } else {
@@ -75,8 +74,10 @@ const TopExchangeToken = () => {
               <div className="container">
                 <div className="pricing__tabs">
                   <div className="pricing__tab active">
-                    {/*MOBILE */}
-                    <div className="fn_mobile_pricing">
+                  
+                  {/*MOBILE */}
+                  
+                  <div className="fn_mobile_pricing">
                       <div className="pricing_item">
                         <div className="pricing__item_holder">
                           <div className="pricing__item__heading">
@@ -89,6 +90,7 @@ const TopExchangeToken = () => {
                                 className="pricing__item_list_item"
                                 key={index}
                               >
+                              //when user click on the name of the token then they automatically get the id/address
                                 <h4
                                   onClick={() =>
                                     navigator.clipboard.writeText(token.id)

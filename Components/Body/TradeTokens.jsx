@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 
 import {Footer} from "../index"
 
-const TradeTokens = () => {jjj
+const TradeTokens = () => {
   const [search, setSearch] = useState("");
   const [searchItem, setSearchItem] = useState(search);
   const [tokens, setTokens] = useState([]);
