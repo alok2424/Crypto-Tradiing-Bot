@@ -9,7 +9,8 @@ const AddNetwork = ({ axios }) => {
   const notifySuccess = (msg) => toast.success(msg, { duration: 2000 });
 
   const [displayImg, setDisplayImg] = useState("");
-  const [network, setNetwork] = useState({
+
+  const [network, setNetwork] = useState({//creating an object of all the parameters which u want to update
     networkName: "",
     rpcUrl: "",
     apiKey: "",
@@ -20,9 +21,9 @@ const AddNetwork = ({ axios }) => {
 
   const handleFormFieldChange = (fieldName, e) => {
     setNetwork({ ...network, [fieldName]: e.target.value });
-  };
+   };
 
-  const saveNetworks = () => {
+   const saveNetworks = () => {
     //destructuring
     const { networkName, rpcUrl, apiKey, walletAddress, privateKey, image } =
       network;
@@ -64,13 +65,13 @@ const AddNetwork = ({ axios }) => {
         //Taking data from website and storing it into response
         const response = await axios({
           method: "post",
-          url: "https://api.pinata.cloud/pinning",
+          url: "https://api.pinata.cloud/pinning/pinFileToIPFS",
           data: formData,
           maxBodyLength: "Infinity",
           headers: {
             pinata_api_key: "95d7ea563ab0cf04d97c",
             pinata_secret_api_key:
-              "a5fb13184b3d902dca9ff986cffa46c2435a126ad4d4256196621328b5c635ee",
+            "a5fb13184b3d902dca9ff986cffa46c2435a126ad4d4256196621328b5c635ee",
             "Content-Type": "multipart/form-data",
           },
         });
@@ -88,22 +89,20 @@ const AddNetwork = ({ axios }) => {
   };
 
   //image drop wale file
+
+  //callback:It helps optimize performance by preventing unnecessary re-creations of the function unless its dependencies change.
   const onDrop = useCallback(async (acceptedFile) => {
     await uploadToInfura(acceptedFile[0]);
   });
 
   const MyDropzone = () => {
-    const {
-      getRootProps,
-      getInputProps,
-      isDragAccept,
-      isDragActive,
-      isDragReject,
-    } = useDropZone({
+    
+    const {getRootProps,getInputProps,isDragAccept,isDragActive,isDragReject} //methods present inside dropzone
+    = useDropZone({
       onDrop: (acceptedFiles) => {
         console.log(acceptedFiles);
       },
-      maxSize: 500000000000, // This is a very large size limit
+      maxSize: 500000000000, // size of file user can upload
     });
 
     // const {
